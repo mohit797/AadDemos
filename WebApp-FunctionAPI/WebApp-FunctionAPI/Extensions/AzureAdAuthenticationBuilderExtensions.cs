@@ -57,12 +57,12 @@ namespace Microsoft.AspNetCore.Authentication
 
             /// <summary>
             /// Redeems the authorization code by calling AcquireTokenByAuthorizationCodeAsync in order to ensure
-            /// that the cache has a token for the signed-in user, which will then enable the controllers (like the
-            /// TodoController, to call AcquireTokenSilentAsync successfully.
+            /// that the cache has a token for the signed-in user, which will then enable the controllers 
+            /// to call AcquireTokenSilentAsync successfully.
             /// </summary>
             private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedContext context)
             {
-                // Acquire a Token for the Graph API and cache it using ADAL. In the TodoListController, we'll use the cache to acquire a token for the Todo List API
+                // Acquire a Token for the Graph API and cache it using ADAL. In the Controller, we'll use the cache to acquire a token for the Todo List API
                 string userObjectId = (context.Principal.FindFirst("http://schemas.microsoft.com/identity/claims/objectidentifier"))?.Value;
                 var authContext = new AuthenticationContext(context.Options.Authority, new TokenSessionCache(userObjectId, context.HttpContext.Session));
                 var credential = new ClientCredential(context.Options.ClientId, context.Options.ClientSecret);

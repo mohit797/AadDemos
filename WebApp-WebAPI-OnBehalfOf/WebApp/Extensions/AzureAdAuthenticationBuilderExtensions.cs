@@ -58,7 +58,7 @@ namespace Microsoft.AspNetCore.Authentication
             /// <summary>
             /// Redeems the authorization code by calling AcquireTokenByAuthorizationCodeAsync in order to ensure
             /// that the cache has a token for the signed-in user, which will then enable the controllers (like the
-            /// TodoController, to call AcquireTokenSilentAsync successfully.
+            /// Controller, to call AcquireTokenSilentAsync successfully.
             /// </summary>
             private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedContext context)
             {

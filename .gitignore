@@ -102,3 +102,14 @@
 /CustomDataExtensions/packages/Microsoft.IdentityModel.Clients.ActiveDirectory.3.14.1
 /CustomDataExtensions/SchemaExtensions/bin/Debug
 /CustomDataExtensions/SchemaExtensions/obj/Debug
+/WebApp-WebAPI-ReAuthenticate/.vs/WebApp-WebAPI/v15/Server/sqlite3/storage.ide-wal
+/WebApp-WebAPI-ReAuthenticate/.vs/WebApp-WebAPI/v15/Server/sqlite3/storage.ide-shm
+/WebApp-WebAPI-ReAuthenticate/.vs/WebApp-WebAPI/v15/Server/sqlite3/storage.ide
+/WebApp-WebAPI-ReAuthenticate/.vs/WebApp-WebAPI/v15/Server/sqlite3/db.lock
+*.suo
+/WebApp-WebAPI-ReAuthenticate/.vs/config/applicationhost.config
+/WebApp-WebAPI-ReAuthenticate/WebAPI/bin/Debug/netcoreapp2.1
+/WebApp-WebAPI-ReAuthenticate/WebAPI/obj
+/WebApp-WebAPI-ReAuthenticate/WebApp/bin/Debug/netcoreapp2.1
+/WebApp-WebAPI-ReAuthenticate/WebApp/obj
+/WebApp-WebAPI-ReAuthenticate/WebApp-WebAPI/obj

@@ -21,6 +21,19 @@ namespace Microsoft.AspNetCore.Authentication
             return builder;
         }
 
+        internal static bool ForceReauthenticate(this RedirectContext context)
+        {
+            context.Properties.Items.TryGetValue("forceReAuth", out string forceAuthenticate);
+
+            bool shouldReauthenticate = false;
+            if (forceAuthenticate != null && !bool.TryParse(forceAuthenticate, out shouldReauthenticate))
+            {
+                return false;
+            }
+
+            return shouldReauthenticate;
+        }
+
         private class ConfigureAzureOptions : IConfigureNamedOptions<OpenIdConnectOptions>
         {
             private readonly AzureAdOptions _azureOptions;
@@ -48,6 +61,8 @@ namespace Microsoft.AspNetCore.Authentication
                 // Subscribing to the OIDC events
                 options.Events.OnAuthorizationCodeReceived = OnAuthorizationCodeReceived;
                 options.Events.OnAuthenticationFailed = OnAuthenticationFailed;
+                options.Events.OnRedirectToIdentityProvider = OnRedirectToIdentityProvider;
+                options.ClaimActions.Remove("auth_time");
             }
 
             public void Configure(OpenIdConnectOptions options)
@@ -81,6 +96,16 @@ namespace Microsoft.AspNetCore.Authentication
             {
                 context.HandleResponse();
                 context.Response.Redirect("/Home/Error?message=" + context.Exception.Message);
+                return Task.FromResult(0);
+            }
+
+            private Task OnRedirectToIdentityProvider(RedirectContext context)
+            {
+                if (context.ForceReauthenticate())
+                {
+                    context.ProtocolMessage.MaxAge = "0";
+                }
+
                 return Task.FromResult(0);
             }
         }

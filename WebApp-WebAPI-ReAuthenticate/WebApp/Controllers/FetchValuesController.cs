@@ -11,12 +11,14 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Newtonsoft.Json;
+using WebApp.Filter;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace WebApp.Controllers
 {
     [Authorize]
+    [ForceReauthentication(50)]
     public class FetchValuesController : Controller
     {
         // GET: /<controller>/
